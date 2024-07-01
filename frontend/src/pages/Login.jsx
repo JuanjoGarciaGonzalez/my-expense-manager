@@ -51,8 +51,7 @@ const Login = () => {
         const email = document.getElementById('email').value
         const password = document.getElementById('password').value
         const token = createToken()
-        let isUser = false
-        const getUser = fetch('http://localhost:3000/user/get', {
+        fetch('http://localhost:3000/user/get', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,43 +61,45 @@ const Login = () => {
             })
         }).then(response => response.json())
         .then(data => {
-            if(data.status === 404) {
-                isUser = false
+            console.log(data)
+            if(data.status === 200) {
+                setLoading(false)
+                setErrorMessage('User already exists, please login.')
+                setError(true)
             } else {
-                isUser = true
+                fetch('http://localhost:3000/user/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        token: token,
+                        name: firstName,
+                        lastName: lastName,
+                        email: email,
+                        password: password
+                    })
+                }).then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.status === 404 || data.status === 500) {
+                        setErrorMessage(data.message)
+                        setError(true)
+                        setLoading(false)
+                        return
+                    }else {
+                        setLoading(false)
+                        localStorage.setItem('token', token)
+                        window.location.href = '/dashboard'
+                    }
+                })
+                .catch(err => {
+                    setLoading(false)
+                    setErrorMessage('Error creating user')
+                    setError(true)
+                })
             }
         })
-
-        if (!isUser) {
-            fetch('http://localhost:3000/user/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    googleId: token,
-                    name: firstName,
-                    lastName: lastName,
-                    email: email,
-                    password: password
-                })
-            }).then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setLoading(false)
-                localStorage.setItem('token', token)
-                window.location.href = '/dashboard'
-            })
-            .catch(err => {
-                setLoading(false)
-                setErrorMessage('Error creating user')
-                setError(true)
-            })
-        }else {
-            setLoading(false)
-            setErrorMessage('User already exists, please login.')
-            setError(true)
-        }
     }
 
     const handleLogin = (e) => {
@@ -121,7 +122,7 @@ const Login = () => {
         }).then(response => response.json())
         .then(data => {
             console.log(data)
-            if(data.status === 404) {
+            if(data.status === 404 || data.status === 500) {
                 setErrorMessage(data.message)
                 setError(true)
                 setLoading(false)

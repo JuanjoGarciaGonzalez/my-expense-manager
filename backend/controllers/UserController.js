@@ -8,7 +8,7 @@ exports.createUser = async (req, res) => {
 
     // Validar campos requeridos
     if (!token || !name || !lastName || !email || !password) {
-      return res.status(400).json({ message: 'Todos los campos requeridos deben ser proporcionados.' });
+      return res.status(404).json({ message: 'Todos los campos requeridos deben ser proporcionados.' });
     }
 
      // Encriptar la contraseña
@@ -37,9 +37,9 @@ exports.getUser = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(200).json({ status: 404, message: 'User not found.' });
+            return res.status(500).json({ status: 500, message: 'User not found.' });
         }
-        res.status(200).json(user);
+        res.status(200).json({status: 200, user});
     }
     catch (err) {
         console.error(err);
@@ -55,7 +55,7 @@ exports.loginUser = async (req, res) => {
         }
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {
-            return res.status(400).json({ status: 400, message: 'Invalid password.' });
+            return res.status(400).json({ status: 404, message: 'Invalid password.' });
         }
         res.status(200).json(user);
     }
