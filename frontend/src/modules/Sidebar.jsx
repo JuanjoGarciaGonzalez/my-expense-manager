@@ -5,7 +5,7 @@ import { FaSquarePollVertical, FaCircleInfo, FaWhmcs, FaHouseChimneyUser, FaBack
 import { Link } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
 
-const Sidebar = () => {
+const Sidebar = ({user}) => {
 
     const handleLogout = () => {
         googleLogout()
@@ -44,10 +44,10 @@ const Sidebar = () => {
             </nav>
 
             <div className='profile-menu flex justify-start items-center mt-10'>
-                <Avatar size='md' name='Juanjo García' src='/profiles/1/juanjo_garcia.jpg' />
+                <Avatar size='md' name='Juanjo García' src={`https://eu.ui-avatars.com/api/?name=${user.name}+${user.lastName}&size=250`} />
                 <div className='ml-4'>
-                    <p className='text-xs text-[#EEEEEE] mb-2'>Juanjo García</p>
-                    <p className='text-xs  text-[#EEEEEE]'>juanjofidenet@gmail.com</p>
+                    <p className='text-xs text-[#EEEEEE] mb-2'>{user.name} {user.lastName}</p>
+                    <p className='text-xs  text-[#EEEEEE]'>{user.email}</p>
                 </div>
             </div>
         </div>

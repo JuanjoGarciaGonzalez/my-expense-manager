@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import BgAnimated from '../modules/BgAnimated'
 import { cn } from '../lib/utils'
 import { GoogleLogin } from '@react-oauth/google';
+import { FaUserXmark } from "react-icons/fa6";
 
 const clientId = '290987074567-aubqds8lertag869pqdkc8uc2m68rnn2.apps.googleusercontent.com'
 
@@ -128,16 +129,51 @@ const Login = () => {
                 setLoading(false)
                 return
             }else {
-                setError(false)
-                setLoading(false)
-                localStorage.setItem('token', token)
-                window.location.href = '/dashboard'
+                fetch('http://localhost:3000/user/update', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        token: token,
+                        email: email
+                    })
+                }).then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.status === 404 || data.status === 500) {
+                        setErrorMessage(data.message)
+                        setError(true)
+                        setLoading(false)
+                        return
+                    }else {
+                        setLoading(false)
+                        localStorage.setItem('token', token)
+                        window.location.href = '/dashboard'
+                    }
+                })
             }
+        })
+        .catch(err => {
+            setLoading(false)
+            setErrorMessage('Error login user, please try again.')
+            setError(true)
         })
     }
 
+    const handlePassword = (element) => {
+        const passwordInput = document.getElementById(element)
+        const passwordButton = document.querySelector('.password-button')
+        passwordButton.classList.toggle('active')
+        if(passwordInput.type === 'password') {
+            passwordInput.type = 'text'
+        }else {
+            passwordInput.type = 'password'
+        }
+    }
+
   return (
-    <section className='login-container py-12 px-4 md:px-10 bg-[#222831]'>
+    <section className='login-container py-4 md:py-12 px-4 md:px-10 bg-[#222831]'>
         <div className='rounded-[36px] p-2 bg-white flex justify-between items-center h-full max-w-[1300px] mx-auto overflow-hidden'>
             <div className='relative py-12 px-10 h-full info-container hidden md:flex w-[50%] rounded-[36px] bg-[#222831] flex-col justify-end gap-24 text-[#EEEEEE]'>
                 <BgAnimated
@@ -170,25 +206,26 @@ const Login = () => {
 
                     <form className='mt-4 login-form' onSubmit={(e) => handleRegister(e)}>
                         <div className='flex items-center justify-center gap-3'>
-                            <div className='relative w-[50%] inline-flex items-center px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3'>
+                            <div className='relative w-[50%] inline-flex items-center px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 overflow-hidden'>
                                 <input type="text" required name='firstName' id='firstName' className='bg-transparent text-sm font-regular'/>
                                 <label className='absolute pointer-events-none font-regular transition-all text-xs' htmlFor="firstName">First name</label>
                             </div>
-                            <div className='relative w-[50%] inline-flex items-center px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3'>
+                            <div className='relative w-[50%] inline-flex items-center px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 overflow-hidden'>
                                 <input type="text" required name='lastName' id='lastName' className='bg-transparent text-sm font-regular'/>
                                 <label className='absolute pointer-events-none font-regular transition-all text-xs'  htmlFor="lastName">Last name</label>
                             </div>
                         </div>
-                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center'>
-                            <input type="email" required name='email' id='email' className='bg-transparent text-sm font-regular w-full'/>
+                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center overflow-hidden'>
+                            <input type="text" required name='email' id='email' className='bg-transparent text-sm font-regular w-full'/>
                             <label className='absolute pointer-events-none font-regular transition-all text-xs'  htmlFor="email">Email</label>
                         </div>
-                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center'>
-                            <input type="password" required name='password' id='password' className='bg-transparent text-sm font-regular w-full'/>
+                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center overflow-hidden'>
+                            <input type="password" required autoComplete='true' name='password' id='password' className='bg-transparent text-sm font-regular w-full'/>
                             <label className='absolute pointer-events-none font-regular transition-all text-xs'  htmlFor="password">Password</label>
+                            <button type='button' className='password-button' onClick={() => handlePassword('password')}></button>
                         </div>
-                        <div className='flex flex-col md:flex-row items-start md:items-center justify-between'>
-                            <button className='effect effect-1 relative w-[50%] text-[#EEEEEE] bg-[#222831] mb-3 text-xs font-semibold inline-flex items-center justify-center gap-1'>
+                        <div className='flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden'>
+                            <button type='submit' className='effect effect-1 relative w-[50%] text-[#EEEEEE] bg-[#222831] mb-3 text-xs font-semibold inline-flex items-center justify-center gap-1'>
                                 Create account {loading && <div class="loader-button"></div>}
                             </button>
                             <div className='google-button relative w-[50%] inline-flex items-center rounded-2xl mb-3'>
@@ -199,7 +236,7 @@ const Login = () => {
                                 />
                             </div>
                         </div>
-                        {error && <p className='text-red-500 text-xs font-semibold'>{errorMessage}</p>}
+                        {error && <p className='text-red-500 text-sm font-semibold flex items-center gap-2'><FaUserXmark /> {errorMessage}</p>}
                     </form>
                 </div>}
 
@@ -208,16 +245,17 @@ const Login = () => {
                     <p className='source-code-pro-italic'>Not a member? <a href="#" className='underline' onClick={() => handleChangeLogin()}>Register</a></p>
 
                     <form className='mt-4 login-form' onSubmit={(e) => handleLogin(e)}>
-                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center'>
-                            <input type="email" required name='email' id='emailLogin' className='bg-transparent text-sm font-regular w-full'/>
+                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center overflow-hidden'>
+                            <input type="text" required name='email' id='emailLogin' className='bg-transparent text-sm font-regular w-full'/>
                             <label className='absolute pointer-events-none font-regular transition-all text-xs'  htmlFor="email">Email</label>
                         </div>
-                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center'>
-                            <input type="password" required name='password' id='passwordLogin' className='bg-transparent text-sm font-regular w-full'/>
+                        <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center overflow-hidden'>
+                            <input type="password" required autoComplete='true' name='password' id='passwordLogin' className='bg-transparent text-sm font-regular w-full'/>
                             <label className='absolute pointer-events-none font-regular transition-all text-xs'  htmlFor="password">Password</label>
+                            <button type='button' className='password-button' onClick={() => handlePassword('passwordLogin')}></button>
                         </div>
                         <div className='flex flex-col md:flex-row items-start md:items-center justify-between'>
-                            <button className='effect effect-1 relative w-[50%] text-[#EEEEEE] bg-[#222831] mb-3 text-xs font-semibold inline-flex items-center justify-center gap-1'>
+                            <button type='submit' className='effect effect-1 relative w-[50%] text-[#EEEEEE] bg-[#222831] mb-3 text-xs font-semibold inline-flex items-center justify-center gap-1'>
                                 Enter {loading && <div class="loader-button"></div>}
                             </button>
                             <div className='google-button relative w-[50%] inline-flex items-center rounded-2xl mb-3'>
@@ -228,7 +266,7 @@ const Login = () => {
                                 />
                             </div>
                         </div>
-                        {error && <p className='text-red-500 text-xs font-semibold'>{errorMessage}</p>}
+                        {error && <p className='text-red-500 text-sm font-semibold flex items-center gap-2'><FaUserXmark /> {errorMessage}</p>}
                     </form>
                 </div>}
             </div>
