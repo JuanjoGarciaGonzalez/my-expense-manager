@@ -52,6 +52,11 @@ const Dashboard = () => {
     //   isMounted = true
     // }
 
+    if (!localStorage.getItem('token')) {
+      //redirect to login
+      window.location.href = '/'
+    }
+
     const token = localStorage.getItem('token')
 
     fetch('http://localhost:3000/user/getUserByToken', {
