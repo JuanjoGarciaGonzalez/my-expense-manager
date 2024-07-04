@@ -6,6 +6,7 @@ const cors = require('cors');
 require('./config/database');
 
 const userRoutes = require('./routes/UserRoutes');
+const settingRoutes = require('./routes/SettingRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -18,6 +19,7 @@ app.use(cors({
   }));
 
 app.use('/user', userRoutes);
+app.use('/setting', settingRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
