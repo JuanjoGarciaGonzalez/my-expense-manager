@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Avatar } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
 import { FaSquarePollVertical, FaCircleInfo, FaWhmcs, FaHouseChimneyUser, FaBackward } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
+import Settings from '../pages/Settings';
+import { useDisclosure } from '@chakra-ui/react';
 
 const Sidebar = ({user}) => {
+
+    const [settings, setSettings] = useState({})
+
+    useEffect(() => {
+        if(user && user._id) {
+            const getSettings = async () => {
+                const response = await fetch('http://localhost:3000/setting/get', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        user: user._id
+                    })
+                })
+    
+                const data = await response.json()
+                setSettings(data.setting)
+            }
+    
+            getSettings()
+        }
+        
+    }, [user])
 
     const handleLogout = () => {
         googleLogout()
         localStorage.removeItem('token')
         window.location.href = '/'
     }
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <div className='h-full flex flex-col justify-between'>
@@ -35,8 +63,8 @@ const Sidebar = ({user}) => {
                 <Link to="/help" className='w-full'>
                     <Button leftIcon={<Icon as={FaCircleInfo} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Help</Button>
                 </Link>
-                <Link to="/settings" className='w-full'>
-                    <Button leftIcon={<Icon as={FaWhmcs} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Settings</Button>
+                <Link onClick={onOpen} className='w-full'>
+                    <Button  leftIcon={<Icon as={FaWhmcs} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Settings</Button>
                 </Link>
                 <Link onClick={() => handleLogout()} className='w-full'>
                     <Button leftIcon={<Icon as={FaBackward} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Log out</Button>
@@ -51,6 +79,8 @@ const Sidebar = ({user}) => {
                 </div>
             </div>
         </div>
+
+        <Settings onClose={onClose} onOpen={onOpen} isOpen={isOpen} settings={settings} user={user}/>
         
     </div>
   )

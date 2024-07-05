@@ -83,18 +83,35 @@ const Login = () => {
                 }).then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    if(data.status === 404 || data.status === 500) {
-                        setErrorMessage(data.message)
-                        setError(true)
-                        setLoading(false)
-                        return
-                    }else {
-                        setLoading(false)
-                        localStorage.setItem('token', token)
-                        window.location.href = '/dashboard'
-                    }
+                    console.log('User created')
+                    fetch('http://localhost:3000/setting/create', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            currency: 'euro',
+                            language: 'en',
+                            user: data._id
+                        })
+                    }).then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        if(data.status === 404 || data.status === 500) {
+                            setErrorMessage(data.message)
+                            setError(true)
+                            setLoading(false)
+                            return
+                        }else {
+                            setLoading(false)
+                            localStorage.setItem('token', token)
+                            window.location.href = '/dashboard'
+                        }
+                    })
+                    
                 })
                 .catch(err => {
+                    console.log(err)
                     setLoading(false)
                     setErrorMessage('Error creating user')
                     setError(true)
@@ -226,7 +243,7 @@ const Login = () => {
                         </div>
                         <div className='flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden'>
                             <button type='submit' className='effect effect-1 relative w-[50%] text-[#EEEEEE] bg-[#222831] mb-3 text-xs font-semibold inline-flex items-center justify-center gap-1'>
-                                Create account {loading && <div class="loader-button"></div>}
+                                Create account {loading && <div className="loader-button"></div>}
                             </button>
                             <div className='google-button relative w-[50%] inline-flex items-center rounded-2xl mb-3'>
                                 <GoogleLogin
@@ -256,7 +273,7 @@ const Login = () => {
                         </div>
                         <div className='flex flex-col md:flex-row items-start md:items-center justify-between'>
                             <button type='submit' className='effect effect-1 relative w-[50%] text-[#EEEEEE] bg-[#222831] mb-3 text-xs font-semibold inline-flex items-center justify-center gap-1'>
-                                Enter {loading && <div class="loader-button"></div>}
+                                Enter {loading && <div className="loader-button"></div>}
                             </button>
                             <div className='google-button relative w-[50%] inline-flex items-center rounded-2xl mb-3'>
                                 <GoogleLogin

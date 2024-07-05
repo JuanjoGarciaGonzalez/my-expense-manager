@@ -37,7 +37,7 @@ exports.getUser = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(500).json({ status: 500, message: 'User not found.' });
+            return res.status(200).json({ status: 500, message: 'User not found.' });
         }
         res.status(200).json({status: 200, user});
     }
