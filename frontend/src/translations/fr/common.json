@@ -1,0 +1,41 @@
+{
+    "app": {
+        "menu": {
+            "dashboard": "Tableau de bord",
+            "statistics": "Statistiques",
+            "help": "Aide",
+            "logout": "Déconnexion",
+            "settings": "Paramètres"
+        },
+        "settings": {
+            "language": "Langue",
+            "currency": "Devise",
+            "title": "Paramètres"
+        },
+        "login": {
+            "title": "Entrez dans le tableau de bord.",
+            "not-member": "Pas encore membre?",
+            "email": "Email",
+            "password": "Mot de passe",
+            "submit": "Entrer",
+            "register": "S'inscrire"
+        },
+        "register": {
+            "title": "Créer un nouveau compte.",
+            "already-member": "Déjà membre?",
+            "email": "Email",
+            "password": "Mot de passe",
+            "name": "Prénom",
+            "last-name": "Nom de famille",
+            "submit": "Créer un compte",
+            "login": "Entrer"
+        },
+        "landing": {
+            "title1": "Bienvenue, dans",
+            "title2": "votre gestionnaire de dépenses!",
+            "description1": "Suivez vos dépenses et gérez votre budget facilement.",
+            "description2": "Inscrivez-vous maintenant et commencez à gérer vos finances.",
+            "footer": "@2024 Ipsum. Développé par Juanjo García."
+        }
+    }
+}

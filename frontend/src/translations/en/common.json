@@ -1,0 +1,41 @@
+{
+    "app": {
+        "menu": {
+            "dashboard": "Dashboard",
+            "statistics": "Statistics",
+            "help": "Help",
+            "logout": "Log out",
+            "settings": "Settings"
+        },
+        "settings": {
+            "language": "Language",
+            "currency": "Currency",
+            "title": "Settings"
+        },
+        "login": {
+            "title": "Enter to dashboard.",
+            "not-member": "Not a member?",
+            "email": "Email",
+            "password": "Password",
+            "submit": "Enter",
+            "register": "Register"
+        },
+        "register": {
+            "title": "Create new account.",
+            "already-member": "Already a member?",
+            "email": "Email",
+            "password": "Password",
+            "name" : "First name",
+            "last-name" : "Last name",
+            "submit": "Create account",
+            "login": "Enter"
+        },
+        "landing": {
+            "title1": "Welcome, to",
+            "title2": "your expense manager!",
+            "description1": "Keep track of your expenses and manage your budget with ease.",
+            "description2": "Sign up now and start managing your finances.",
+            "footer": "@2024 Ipsum. Developed by Juanjo García."
+        }
+    }
+}

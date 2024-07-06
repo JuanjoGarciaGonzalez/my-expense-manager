@@ -1,0 +1,41 @@
+{
+    "app": {
+        "menu": {
+            "dashboard": "Arbela",
+            "statistics": "Estatistikak",
+            "help": "Laguntza",
+            "logout": "Saioa amaitu",
+            "settings": "Ezarpenak"
+        },
+        "settings": {
+            "language": "Hizkuntza",
+            "currency": "Moneta",
+            "title": "Ezarpenak"
+        },
+        "login": {
+            "title": "Sartu arbelera.",
+            "not-member": "Ez zara kide?",
+            "email": "Posta elektronikoa",
+            "password": "Pasahitza",
+            "submit": "Sartu",
+            "register": "Erregistratu"
+        },
+        "register": {
+            "title": "Sortu kontu berria.",
+            "already-member": "Dagoeneko kide zara?",
+            "email": "Posta elektronikoa",
+            "password": "Pasahitza",
+            "name": "Izena",
+            "last-name": "Abizena",
+            "submit": "Kontua sortu",
+            "login": "Sartu"
+        },
+        "landing": {
+            "title1": "Ongi etorri, zure",
+            "title2": "gastu kudeatzailea!",
+            "description1": "Jarraitu zure gastuak eta kudeatu zure aurrekontua erraz.",
+            "description2": "Eman izena orain eta hasi zure finantzak kudeatzen.",
+            "footer": "@2024 Ipsum. Juanjo Garcíak garatua."
+        }
+    }
+}

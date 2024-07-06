@@ -1,10 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Sidebar from '../modules/Sidebar'
 import Chart from 'chart.js/auto';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
   const chartRef = useRef(null)
   const [user, setUser] = useState({})
+  const { t } = useTranslation("common");
 
   // const DATA_COUNT = 7;
   // const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};
@@ -79,7 +81,7 @@ const Dashboard = () => {
       {user && <main className='flex'>
         <section className='inline-block w-[20dvw] h-[100dvh] bg-[#222831] text-[#EEEEEE] px-8 py-9 source-code-pro-bold'><Sidebar user={user}/></section>
         <section className='inline-block w-[80dvw] h-[100dvh] bg-[#31363F] text-[#EEEEEE] px-8 py-9 source-code-pro-regular '>
-          <h1 className='text-3xl source-code-pro-bold'>Dashboard</h1>
+          <h1 className='text-3xl source-code-pro-bold'>{t("app.menu.dashboard")}</h1>
           {/* <canvas ref={chartRef} id="myChart" width="400" height="400" className='w-[33dvw] h-[50dvh]'></canvas> */}
         </section>
       </main>}

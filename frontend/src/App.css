@@ -430,15 +430,49 @@ opacity: 0;
       top: 0;
       left: 0;
       padding: 7px 3rem;
+      font-family: "Source Code Pro", monospace;
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      span {
+        position: relative;
+
+        &::after {
+          content: "\f05a";
+          font-family: FontAwesome;
+          position: absolute;
+          bottom: -12px;
+          font-size: 15px;
+          color: #222831;
+          cursor: pointer;
+        }
+      }
     }
 
     .chakra-modal__body {
       background: #222831;
       height: 100%;
       border-radius: 36px;
-      padding-top: 4rem;
+      padding-top: 0;
       min-height: 300px;
       color: #EEEEEE;
+
+      select {
+        position: relative;
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari and Chrome */
+        appearance:none;
+        cursor: pointer;
+        background-image: url("/circle-check-regular.svg");
+        background-repeat: no-repeat;
+        background-position: right .5em top 50%, 0 0;
+        background-size: 20px 20px;
+      }
     }
   }
 }

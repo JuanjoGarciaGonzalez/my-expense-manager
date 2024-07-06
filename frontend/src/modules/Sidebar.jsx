@@ -4,12 +4,15 @@ import { Icon } from '@chakra-ui/icons'
 import { FaSquarePollVertical, FaCircleInfo, FaWhmcs, FaHouseChimneyUser, FaBackward } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
-import Settings from '../pages/Settings';
+import Settings from './Settings';
 import { useDisclosure } from '@chakra-ui/react';
+import {useTranslation} from "react-i18next";
+import { changeLanguage } from '../services/LanguageService';
 
 const Sidebar = ({user}) => {
 
     const [settings, setSettings] = useState({})
+    const {t} = useTranslation("common");
 
     useEffect(() => {
         if(user && user._id) {
@@ -26,6 +29,7 @@ const Sidebar = ({user}) => {
     
                 const data = await response.json()
                 setSettings(data.setting)
+                changeLanguage(data.setting.language)
             }
     
             getSettings()
@@ -49,11 +53,11 @@ const Sidebar = ({user}) => {
             <nav className='mt-[4rem] flex flex-col gap-3 items-start'>
                
                 <Link to="/" className='w-full'>
-                    <Button leftIcon={<Icon as={FaHouseChimneyUser} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Dashboard</Button>
+                    <Button leftIcon={<Icon as={FaHouseChimneyUser} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.dashboard")}</Button>
                 </Link>
                 
                 <Link to="/stats" className='w-full'>
-                    <Button leftIcon={<Icon as={FaSquarePollVertical} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Statistics</Button>
+                    <Button leftIcon={<Icon as={FaSquarePollVertical} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.statistics")}</Button>
                 </Link>
             </nav>
         </div>
@@ -61,13 +65,13 @@ const Sidebar = ({user}) => {
         <div>
             <nav className='conf-menu flex flex-col gap-3 items-start'>
                 <Link to="/help" className='w-full'>
-                    <Button leftIcon={<Icon as={FaCircleInfo} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Help</Button>
+                    <Button leftIcon={<Icon as={FaCircleInfo} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.help")}</Button>
                 </Link>
                 <Link onClick={onOpen} className='w-full'>
-                    <Button  leftIcon={<Icon as={FaWhmcs} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Settings</Button>
+                    <Button  leftIcon={<Icon as={FaWhmcs} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.settings")}</Button>
                 </Link>
                 <Link onClick={() => handleLogout()} className='w-full'>
-                    <Button leftIcon={<Icon as={FaBackward} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>Log out</Button>
+                    <Button leftIcon={<Icon as={FaBackward} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.logout")}</Button>
                 </Link>
             </nav>
 
