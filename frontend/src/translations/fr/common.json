@@ -10,7 +10,14 @@
         "settings": {
             "language": "Langue",
             "currency": "Devise",
-            "title": "Paramètres"
+            "title": "Paramètres",
+            "english": "Anglais",
+            "spanish": "Espagnol",
+            "french": "Français",
+            "basque": "Basque",
+            "euro": "Euro",
+            "dollar": "Dollar",
+            "sterling": "Livre sterling"
         },
         "login": {
             "title": "Entrez dans le tableau de bord.",

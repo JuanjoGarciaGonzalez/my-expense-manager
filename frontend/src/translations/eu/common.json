@@ -10,7 +10,14 @@
         "settings": {
             "language": "Hizkuntza",
             "currency": "Moneta",
-            "title": "Ezarpenak"
+            "title": "Ezarpenak",
+            "english": "Ingelesa",
+            "spanish": "Espainiera",
+            "french": "Frantsesa",
+            "basque": "Euskara",
+            "euro": "Euroa",
+            "dollar": "Dolarra",
+            "sterling": "Libera esterlina"
         },
         "login": {
             "title": "Sartu arbelera.",

@@ -10,7 +10,14 @@
         "settings": {
             "language": "Language",
             "currency": "Currency",
-            "title": "Settings"
+            "title": "Settings",
+            "english": "English",
+            "spanish": "Spanish",
+            "french": "French",
+            "basque": "Basque",
+            "euro": "Euro",
+            "dollar": "Dollar",
+            "sterling": "Sterling"
         },
         "login": {
             "title": "Enter to dashboard.",

@@ -10,7 +10,14 @@
         "settings": {
             "language": "Idioma",
             "currency": "Moneda",
-            "title": "Configuración"
+            "title": "Configuración",
+            "english": "Inglés",
+            "spanish": "Español",
+            "french": "Francés",
+            "basque": "Euskera",
+            "euro": "Euro",
+            "dollar": "Dólar",
+            "sterling": "Libra esterlina"
         },
         "login": {
             "title": "Entrar al tablero.",

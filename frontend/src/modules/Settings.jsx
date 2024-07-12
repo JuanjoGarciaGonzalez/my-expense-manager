@@ -87,19 +87,19 @@ const Settings = ({ isOpen, onOpen, onClose, settings, user }) => {
               <div>
                 <Text className='font-semibold mx-1'>{t("app.settings.language")}</Text>
                 <select id='language' value={language} onChange={() => changeSettings()} className='min-w-[140px] p-2 mt-2 rounded-2xl border-none bg-[#EEEEEE] text-[#222831] font-semibold outline-none focus:outline-none'>
-                  <option value='en'>English</option>
-                  <option value='es'>Spanish</option>
-                  <option value='fr'>French</option>
-                  <option value='eu'>Basque</option>
+                  <option value='en'>{t("app.settings.english")}</option>
+                  <option value='es'>{t("app.settings.spanish")}</option>
+                  <option value='fr'>{t("app.settings.french")}</option>
+                  <option value='eu'>{t("app.settings.basque")}</option>
                 </select>
               </div>
 
               <div>
                 <Text className='font-semibold mx-1'>{t("app.settings.currency")}</Text>
                 <select id='currency' value={currency} onChange={() => changeSettings()} className='min-w-[140px] p-2 mt-2 rounded-2xl border-none bg-[#EEEEEE] text-[#222831] font-semibold outline-none focus:outline-none'>
-                  <option value='euro'>Euro/€</option>
-                  <option value='usd'>Dollar/$</option>
-                  <option value='gbp'>Sterling/£</option>
+                  <option value='euro'>{t("app.settings.euro")}/€</option>
+                  <option value='usd'>{t("app.settings.dollar")}/$</option>
+                  <option value='gbp'>{t("app.settings.sterling")}/£</option>
                 </select>
               </div>
             </section>
