@@ -52,13 +52,13 @@ const Sidebar = ({user}) => {
 
             <nav className='mt-[4rem] flex flex-col gap-3 items-start'>
                
-                <Link to="/" className='w-full'>
+                <Link to="/dashboard" className='w-full'>
                     <Button leftIcon={<Icon as={FaHouseChimneyUser} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.dashboard")}</Button>
                 </Link>
                 
-                <Link to="/stats" className='w-full'>
+                {/* <Link to="/stats" className='w-full'>
                     <Button leftIcon={<Icon as={FaSquarePollVertical} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.statistics")}</Button>
-                </Link>
+                </Link> */}
             </nav>
         </div>
         
