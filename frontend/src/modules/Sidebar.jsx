@@ -5,6 +5,7 @@ import { FaSquarePollVertical, FaCircleInfo, FaWhmcs, FaHouseChimneyUser, FaBack
 import { Link } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
 import Settings from './Settings';
+import Help from './Help';
 import { useDisclosure } from '@chakra-ui/react';
 import {useTranslation} from "react-i18next";
 import { changeLanguage } from '../services/LanguageService';
@@ -44,6 +45,7 @@ const Sidebar = ({user}) => {
     }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const {isHelpOpen, onHelpOpen, onHelpClose} = useDisclosure()
 
   return (
     <div className='h-full flex flex-col justify-between'>
@@ -64,7 +66,7 @@ const Sidebar = ({user}) => {
         
         <div>
             <nav className='conf-menu flex flex-col gap-3 items-start'>
-                <Link to="/help" className='w-full'>
+                <Link onClick={onHelpOpen} className='w-full'>
                     <Button leftIcon={<Icon as={FaCircleInfo} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.help")}</Button>
                 </Link>
                 <Link onClick={onOpen} className='w-full'>
@@ -85,7 +87,7 @@ const Sidebar = ({user}) => {
         </div>
 
         <Settings onClose={onClose} onOpen={onOpen} isOpen={isOpen} settings={settings} user={user}/>
-        
+        <Help onHelpClose={onHelpClose} onHelpOpen={onHelpOpen} isHelpOpen={isHelpOpen}/>
     </div>
   )
 }
