@@ -192,8 +192,8 @@ const Login = () => {
     }
 
   return (
-    <section className='login-container py-4 md:py-12 px-4 md:px-10 bg-[#222831]'>
-        <div className='rounded-[36px] p-2 bg-white flex justify-between items-center h-full max-w-[1300px] mx-auto overflow-hidden'>
+    <section className='login-container flex items-center py-4 md:py-12 px-4 md:px-10 bg-[#222831]'>
+        <div className='rounded-[36px] p-2 bg-white flex justify-between items-center h-full max-w-[1300px] max-h-[1000px] mx-auto overflow-hidden'>
             <div className='relative py-12 px-10 h-full info-container hidden md:flex w-[50%] rounded-[36px] bg-[#222831] flex-col justify-end gap-24 text-[#EEEEEE]'>
                 <BgAnimated
                     numSquares={20}
