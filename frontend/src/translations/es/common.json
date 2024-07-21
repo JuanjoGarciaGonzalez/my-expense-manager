@@ -17,7 +17,8 @@
             "basque": "Euskera",
             "euro": "Euro",
             "dollar": "Dólar",
-            "sterling": "Libra esterlina"
+            "sterling": "Libra esterlina",
+            "info": "Configura desde este panel el idioma de la aplicación, así como la moneda a utilizar."
         },
         "login": {
             "title": "Entrar al tablero.",

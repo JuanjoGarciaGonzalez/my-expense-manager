@@ -17,7 +17,8 @@
             "basque": "Basque",
             "euro": "Euro",
             "dollar": "Dollar",
-            "sterling": "Sterling"
+            "sterling": "Sterling",
+            "info": "Configure from this panel the language of the application, as well as the currency to use."
         },
         "login": {
             "title": "Enter to dashboard.",

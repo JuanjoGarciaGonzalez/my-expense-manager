@@ -17,7 +17,8 @@
             "basque": "Euskara",
             "euro": "Euroa",
             "dollar": "Dolarra",
-            "sterling": "Libera esterlina"
+            "sterling": "Libera esterlina",
+            "info": "Konfiguratu panel honetatik aplikazioaren hizkuntza, baita erabili beharreko moneta ere."
         },
         "login": {
             "title": "Sartu arbelera.",

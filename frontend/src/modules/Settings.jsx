@@ -9,7 +9,8 @@ import {
   ModalCloseButton,
   Button,
   Text,
-  Heading
+  Heading,
+  Tooltip
 } from '@chakra-ui/react'
 import BgAnimated from './BgAnimated'
 import { cn } from '../lib/utils'
@@ -71,7 +72,12 @@ const Settings = ({ isOpen, onOpen, onClose, settings, user }) => {
       {overlay}
       <ModalContent>
         <div className='modal-wrapper'>
-          <ModalHeader>{t("app.settings.title")} <span></span></ModalHeader>
+          <ModalHeader className='z-10'>
+            {t("app.settings.title")} 
+            <Tooltip label={t("app.settings.info")} placement='top'>
+              <span></span>
+            </Tooltip>
+          </ModalHeader>
           <ModalBody className='flex items-center justify-center'>
             <BgAnimated
                 numSquares={17}

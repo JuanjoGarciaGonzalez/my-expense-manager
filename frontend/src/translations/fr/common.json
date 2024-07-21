@@ -17,7 +17,8 @@
             "basque": "Basque",
             "euro": "Euro",
             "dollar": "Dollar",
-            "sterling": "Livre sterling"
+            "sterling": "Livre sterling",
+            "info": "Configurez à partir de ce panneau la langue de l'application, ainsi que la devise à utiliser."
         },
         "login": {
             "title": "Entrez dans le tableau de bord.",
