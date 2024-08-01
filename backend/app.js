@@ -7,6 +7,9 @@ require('./config/database');
 
 const userRoutes = require('./routes/UserRoutes');
 const settingRoutes = require('./routes/SettingRoutes');
+const expenseRoutes = require('./routes/ExpenseRoutes');
+const incomeRoutes = require('./routes/IncomeRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -20,6 +23,8 @@ app.use(cors({
 
 app.use('/user', userRoutes);
 app.use('/setting', settingRoutes);
+app.use('/expense', expenseRoutes);
+app.use('/income', incomeRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

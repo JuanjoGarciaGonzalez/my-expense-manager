@@ -13,8 +13,9 @@ import {
 import { useTranslation } from 'react-i18next'
 import BgAnimated from './BgAnimated'
 import { cn } from '../lib/utils'
+import SliderWelcome from './SliderWelcome'
 
-const Help = ({ isHelpOpen, onHelpOpen, onHelpClose }) => {
+const Help = ({ isHelpOpen, onHelpOpen, onHelpClose, user }) => {
   const { t } = useTranslation("common");
 
   const OverlayOne = () => (
@@ -28,27 +29,26 @@ const Help = ({ isHelpOpen, onHelpOpen, onHelpClose }) => {
 
 
   return (
-    <Modal isCentered isOpen={isHelpOpen} onClose={onHelpClose}>
+    <Modal isCentered isOpen={isHelpOpen} onOpen={onHelpOpen} onClose={onHelpClose}>
       {overlay}
       <ModalContent>
         <div className='modal-wrapper'>
-          <ModalHeader className='z-10'>
-            Primeros pasos
-          </ModalHeader>
-          <ModalBody className='flex items-center justify-center'>
+          <ModalBody className='flex flex-col items-start justify-center'>
             <BgAnimated
-                numSquares={17}
-                maxOpacity={0.25}
+                numSquares={20}
+                maxOpacity={0.15}
                 duration={3}
                 repeatDelay={1}
                 className={cn(
-                "[mask-image:radial-gradient(250px_circle_at_center,white,transparent)]",
-                "inset-x-0 inset-y-[-5%] h-[100%] skew-y-12",
+                "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
+                "inset-x-[15%] inset-y-[-12%] h-[80%] skew-y-12 opacity-50",
                 )}
             />
-            <section className='px-[1rem] flex items-center justify-around h-full w-full'>
-              
-            </section>
+            <div className='px-5 py-[35px]'>
+                <Heading as='h2' size='xl' textAlign='left'>Hola, {user.name} {user.lastName}</Heading>
+                <Text textAlign='center'>¿Quieres saber como empezar a manejar tus finanzas?</Text>
+            </div>
+            <SliderWelcome onClose={onHelpClose}/>
               
           </ModalBody>
         </div>

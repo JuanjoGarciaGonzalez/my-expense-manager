@@ -1,4 +1,5 @@
-const User = require('../models/User');
+const Income = require('../models/Income');
+const User  = require('../models/User');
 
 exports.createIncome = async (req, res) => {
     try {
@@ -73,5 +74,24 @@ exports.updateIncome = async (req, res) => {
     catch (err) {
         console.error(err);
         res.status(500).json({ message: 'An error ocurred updating income.' });
+    }
+}
+
+exports.deleteIncome = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(404).json({ status: 404, message: 'User not found.' });
+        }
+        const income = await Income.findById(req.params.id);
+        if (!income) {
+            return res.status(404).json({ status: 404, message: 'Income not found.' });
+        }
+        await income.remove();
+        res.status(204).json();
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'An error ocurred deleting income.' });
     }
 }

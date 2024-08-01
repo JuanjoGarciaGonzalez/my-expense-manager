@@ -1,8 +1,11 @@
+const Expense = require('../models/Expense');
 const User = require('../models/User');
+
 
 exports.createExpense = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
+        console.log(req);
         if (!user) {
             return res.status(404).json({ status: 404, message: 'User not found.' });
         }
@@ -67,5 +70,24 @@ exports.updateExpense = async (req, res) => {
     catch (err) {
         console.error(err);
         res.status(500).json({ message: 'An error ocurred updating expense.' });
+    }
+}
+
+exports.deleteExpense = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(404).json({ status: 404, message: 'User not found.' });
+        }
+        const expense = await Expense.findById(req.params.id);
+        if (!expense) {
+            return res.status(404).json({ status: 404, message: 'Expense not found.' });
+        }
+        await expense.remove();
+        res.status(204).json();
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'An error ocurred deleting expense.' });
     }
 }

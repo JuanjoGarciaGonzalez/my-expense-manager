@@ -45,7 +45,7 @@ const Sidebar = ({user}) => {
     }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const {isHelpOpen, onHelpOpen, onHelpClose} = useDisclosure()
+    const { isOpen: isHelpOpen, onOpen: onHelpOpen, onClose: onHelpClose } = useDisclosure()
 
   return (
     <div className='h-full flex flex-col justify-between'>
@@ -87,7 +87,7 @@ const Sidebar = ({user}) => {
         </div>
 
         <Settings onClose={onClose} onOpen={onOpen} isOpen={isOpen} settings={settings} user={user}/>
-        <Help onHelpClose={onHelpClose} onHelpOpen={onHelpOpen} isHelpOpen={isHelpOpen}/>
+        <Help onHelpClose={onHelpClose} onHelpOpen={onHelpOpen} isHelpOpen={isHelpOpen} user={user}/>
     </div>
   )
 }

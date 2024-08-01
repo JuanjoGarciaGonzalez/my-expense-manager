@@ -38,6 +38,9 @@ body, html {
   .login-form {
     input {
       font-size: 12px !important;
+      padding: 0;
+      border-color: transparent;
+      border: none;
       &:focus, &:active, &:autofill, &:autofill:focus, &:hover, &:valid, &:invalid, &:user-valid {
         border-color: transparent;
         box-shadow:  none;
@@ -152,14 +155,14 @@ body, html {
 }
 
 .welcome-welcome-container {
-  padding: 5% 10%;
+  padding: 1rem;
   font-family: "Source Code Pro", monospace;
   font-optical-sizing: auto;
   font-style: normal;
 
   .welcome-welcome-item {
-      padding-left: 9%;
-      padding-top: 5%;
+      padding-left: 13%;
+      padding-top: 4%;
       font-size: 14px;
 
       .welcome-welcome-item-content {
@@ -207,7 +210,7 @@ body, html {
   }
 
   .welcome-welcome-title  {
-      font-size: 30px;
+      font-size: 27px;
       font-weight: bold;
       color: #EEEEEE;
       margin-bottom: 1rem;
@@ -248,6 +251,9 @@ body, html {
 }
 
 .slider {
+  max-width: 900px;
+  width: 80vw;
+  height: 380px;
 
   .previousButton {
       top: 95% !important;
@@ -327,8 +333,8 @@ opacity: 0;
 .slide.animateIn.next .step-span{
 -webkit-transform: translateX(0) !important; 
         transform: translateX(0) !important;
--webkit-transition-delay: .4s !important;
-        transition-delay: .4s !important;
+-webkit-transition-delay: .8s !important;
+        transition-delay: .8s !important;
         opacity: 1 !important;
 }
 
@@ -392,6 +398,38 @@ opacity: 0;
     width: 40px;
     transition: all 0.15s linear 0s;
     color: #EEEEEE;
+  }
+  
+  &:hover {
+    text-indent: -20px;
+    
+    &:before {
+      right:5px;
+      opacity: 1;
+      text-indent: 0px;
+    }
+  }
+}
+
+.effect.effect-2 {
+  transition: all 0.15s linear 0s;
+  
+  &:before {
+    content: "\f30b";
+    font-family: FontAwesome;
+    font-size: 12px;
+    font-weight: 200;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 10px;
+    top: 0;
+    opacity: 0;
+    height: 100%;
+    width: 40px;
+    transition: all 0.15s linear 0s;
+    color: #222831;
   }
   
   &:hover {
