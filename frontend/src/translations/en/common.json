@@ -26,7 +26,7 @@
             "email": "Email",
             "password": "Password",
             "submit": "Enter",
-            "register": "Register"
+            "register": "Create your account"
         },
         "register": {
             "title": "Create new account.",

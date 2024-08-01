@@ -26,7 +26,7 @@
             "email": "Email",
             "password": "Mot de passe",
             "submit": "Entrer",
-            "register": "S'inscrire"
+            "register": "Créez votre compte"
         },
         "register": {
             "title": "Créer un nouveau compte.",

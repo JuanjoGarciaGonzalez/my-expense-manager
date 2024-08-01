@@ -26,7 +26,7 @@
             "email": "Correo electrónico",
             "password": "Contraseña",
             "submit": "Entrar",
-            "register": "Registrarse"
+            "register": "Crea tu cuenta"
         },
         "register": {
             "title": "Crear una nueva cuenta.",
