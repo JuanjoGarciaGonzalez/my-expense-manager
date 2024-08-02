@@ -193,7 +193,7 @@ const Login = () => {
 
   return (
     <section className='login-container flex items-center py-4 md:py-12 px-4 md:px-10 bg-[#222831]'>
-        <div className='rounded-[36px] p-2 bg-white flex justify-between items-center h-full max-w-[1300px] max-h-[1000px] mx-auto overflow-hidden'>
+        <div className='rounded-[36px] p-2 bg-white flex justify-between items-center h-full w-[1300px] max-h-[1000px] mx-auto overflow-hidden'>
             <div className='relative py-12 px-10 h-full info-container hidden md:flex w-[50%] rounded-[36px] bg-[#222831] flex-col justify-end gap-24 text-[#EEEEEE]'>
                 <BgAnimated
                     numSquares={20}
@@ -206,22 +206,22 @@ const Login = () => {
                     )}
                 />
                 <div className='absolute top-12 left-10'>
-                    <span className='source-code-pro-regular text-xl text-[#EEEEEE]'>Ipsum</span>
+                    <span className='ubuntu-regular text-xl text-[#EEEEEE]'>Ipsum</span>
                 </div>
                 <div>
-                    <h1 className='text-5xl source-code-pro-bold mb-5'>{t("app.landing.title1")} <br/>{t("app.landing.title2")}</h1>
-                    <p className='source-code-pro-regular text-xl'>{t("app.landing.description1")}</p>
-                    <p className='source-code-pro-regular text-xl'>{t("app.landing.description2")}</p>
+                    <h1 className='text-5xl ubuntu-bold mb-5'>{t("app.landing.title1")} <br/>{t("app.landing.title2")}</h1>
+                    <p className='ubuntu-regular text-xl'>{t("app.landing.description1")}</p>
+                    <p className='ubuntu-regular text-xl'>{t("app.landing.description2")}</p>
                 </div>
-                <div className='text-sm text-center mx-auto source-code-pro-regular'>
+                <div className='text-sm text-center mx-auto ubuntu-regular'>
                     <span>{t("app.landing.footer")}</span>
                 </div>
             </div>
             <div className='py-12 px-4 md:px-10 h-full w-[100%] md:w-[50%] bg-white relative flex justify-center items-center'>
                 <img src="/logoipsum-dark.svg" alt="Logo placeholder" className="w-[200px] max-w-[40dvw] mx-auto text-center absolute top-9 left-0 right-0 m-auto"/>
-                {!isLoginView && <div className='source-code-pro-regular min-w-[77%]'>
-                    <h2 className='source-code-pro-bold text-3xl'>{t("app.register.title")}</h2>
-                    <p className='source-code-pro-italic'>{t("app.register.already-member")} <a href="#" className='underline' onClick={() => handleChangeLogin()}>{t("app.register.login")}</a></p>
+                {!isLoginView && <div className='ubuntu-regular min-w-[90%] md:min-w-[77%]'>
+                    <h2 className='ubuntu-bold text-3xl'>{t("app.register.title")}</h2>
+                    <p className='ubuntu-italic'>{t("app.register.already-member")} <a href="#" className='underline' onClick={() => handleChangeLogin()}>{t("app.register.login")}</a></p>
 
                     <form className='mt-4 login-form' onSubmit={(e) => handleRegister(e)}>
                         <div className='flex items-center justify-center gap-3'>
@@ -259,9 +259,9 @@ const Login = () => {
                     </form>
                 </div>}
 
-                {isLoginView && <div className='source-code-pro-regular min-w-[77%]'>
-                    <h2 className='source-code-pro-bold text-3xl'>{t("app.login.title")}</h2>
-                    <p className='source-code-pro-italic'>{t("app.login.not-member")} <a href="#" className='underline' onClick={() => handleChangeLogin()}>{t("app.login.register")}</a></p>
+                {isLoginView && <div className='ubuntu-regular min-w-[90%] md:min-w-[77%]'>
+                    <h2 className='ubuntu-bold text-3xl'>{t("app.login.title")}</h2>
+                    <p className='ubuntu-italic'>{t("app.login.not-member")} <a href="#" className='underline' onClick={() => handleChangeLogin()}>{t("app.login.register")}</a></p>
 
                     <form className='mt-4 login-form' onSubmit={(e) => handleLogin(e)}>
                         <div className='relative px-4 py-4 rounded-2xl bg-[#DCE2EA] mb-3 flex items-center overflow-hidden'>

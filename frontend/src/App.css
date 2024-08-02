@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.source-code-pro-regular {
-  font-family: "Source Code Pro", monospace;
+.ubuntu-regular {
+  font-family: "Ubuntu", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
-.source-code-pro-bold {
-  font-family: "Source Code Pro", monospace;
+.ubuntu-bold {
+  font-family: "Ubuntu", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
-.source-code-pro-italic {
-  font-family: "Source Code Pro", monospace;
+.ubuntu-italic {
+  font-family: "Ubuntu", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -68,7 +68,7 @@ body, html {
       span {
         color: #222831 !important;
         opacity: 1 !important;
-        font-family: "Source Code Pro", monospace;
+        font-family: "Ubuntu", monospace;
         font-weight: 700;
         font-size: 11px;
       }
@@ -156,7 +156,7 @@ body, html {
 
 .welcome-welcome-container {
   padding: 1rem;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Ubuntu", monospace;
   font-optical-sizing: auto;
   font-style: normal;
 
@@ -446,7 +446,7 @@ opacity: 0;
 /* SETTINGS */
 .chakra-modal__content {
   border-radius: 36px !important;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Ubuntu", monospace;
   font-optical-sizing: auto;
   font-style: normal;
   overflow: hidden;
@@ -468,7 +468,7 @@ opacity: 0;
       top: 0;
       left: 0;
       padding: 7px 3rem;
-      font-family: "Source Code Pro", monospace;
+      font-family: "Ubuntu", monospace;
       font-optical-sizing: auto;
       font-style: normal;
       font-weight: 700;
@@ -512,5 +512,18 @@ opacity: 0;
         background-size: 20px 20px;
       }
     }
+  }
+}
+
+.tremor-Table-table {
+  th, td {
+    text-wrap: nowrap;
+    font-size: 11px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(229 231 235 / .1);
+  }
+
+  th > div {
+    padding: 0;
   }
 }
