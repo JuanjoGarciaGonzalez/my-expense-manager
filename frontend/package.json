@@ -36,6 +36,7 @@
     "@remixicon/react": "^4.2.0",
     "@tanstack/react-table": "^8.19.3",
     "@tremor/react": "^3.17.4",
+    "aos": "^2.3.4",
     "chart.js": "^4.4.3",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",

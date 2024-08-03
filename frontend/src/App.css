@@ -518,7 +518,7 @@ opacity: 0;
 .tremor-Table-table {
   th, td {
     text-wrap: nowrap;
-    font-size: 11px;
+    font-size: 12px;
     padding: 10px;
     border-bottom: 1px solid rgb(229 231 235 / .1);
   }
@@ -526,4 +526,86 @@ opacity: 0;
   th > div {
     padding: 0;
   }
+}
+
+.modal-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  input {
+    font-size: 12px !important;
+    padding: 0;
+    border-color: transparent;
+    border: none;
+    color: #222831;
+    &:focus, &:active, &:autofill, &:autofill:focus, &:hover, &:valid, &:invalid, &:user-valid {
+      border-color: transparent;
+      box-shadow:  none;
+      outline: none;
+      background: transparent !important;
+      -webkit-box-shadow:0 0 0 50px rgb(220 226 234) inset; /* Change the color to your own background color */
+    }
+  }
+  label {
+    top: 7px;
+    left: 1rem;
+    line-height: 3;
+    transition: all .2s ease;
+    color: #222831;
+  }
+
+  .google-button button{
+    border-radius: 1rem !important;
+    height: 48px !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    border: 1px solid #222831 !important;
+    overflow: hidden !important;
+    
+    span {
+      color: #222831 !important;
+      opacity: 1 !important;
+      font-family: "Ubuntu", monospace;
+      font-weight: 700;
+      font-size: 11px;
+    }
+  }
+
+  .password-button  {
+    all: unset;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    background: #222831;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    transition: all 0.3s ease;
+    
+    &::before {
+      content: "\f070";
+      font-family: FontAwesome;
+      font-size: 14px;
+      color: #EEEEEE;
+    }
+
+    &.active::before {
+      content: "\f06e";
+    }
+  }
+}
+
+.modal-form input:focus+label, .modal-form input:valid+label, .modal-form label.active {
+  font-size: 10px;
+  top: -4px;
+  font-weight: 600;
 }
