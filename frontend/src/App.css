@@ -26,9 +26,10 @@
   font-style: italic;
 }
 
-body, html {
-  max-width: 100dvw;
+body {
+  width: 100dvw;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* LOGIN */
@@ -608,4 +609,55 @@ opacity: 0;
   font-size: 10px;
   top: -4px;
   font-weight: 600;
+}
+
+.sidebar {
+  transition: max-width 1s ease;
+
+  .logo {
+    transition: all .2s ease;
+  }
+
+  &.close {
+    width: auto;
+    max-width: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    .menu-text {
+      display: none;
+    }
+
+    .logo {
+      transition: none;
+      width: 0;
+    }
+    
+    + .content {
+      width: 100%;
+    }
+
+    .logo-container {
+      justify-content: center;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .menu-button {
+      justify-content: center;
+      margin-inline-end: 0;
+
+      span {
+        margin-inline-end: 0;
+      }
+    }
+
+    .profile-menu {
+      align-items: end;
+      justify-content: center;
+      height: 50px;
+    }
+  }
 }

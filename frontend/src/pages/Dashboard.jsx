@@ -136,8 +136,8 @@ const Dashboard = () => {
   return (
     <>
       {user && <main className='flex'>
-        <section className='inline-block w-[20dvw] h-[100dvh] bg-[#222831] text-[#EEEEEE] px-8 py-9 ubuntu-bold'><Sidebar user={user}/></section>
-        <section className='inline-block w-[80dvw] bg-[#31363F] text-[#EEEEEE] px-8 py-9 ubuntu-regular overflow-y-auto'>
+        <section className='sidebar 2xl:close inline-block w-[20dvw] max-w-[20dvw] h-[100dvh] bg-[#222831] text-[#EEEEEE] px-8 py-9 ubuntu-bold'><Sidebar user={user}/></section>
+        <section className='content inline-block w-[80dvw] bg-[#31363F] text-[#EEEEEE] px-8 py-9 ubuntu-regular overflow-y-auto'>
 
           <div className='grid grid-cols-4 grid-rows-2 gap-5'>
 

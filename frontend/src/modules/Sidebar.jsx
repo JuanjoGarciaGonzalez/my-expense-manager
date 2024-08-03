@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Avatar } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
-import { FaSquarePollVertical, FaCircleInfo, FaWhmcs, FaHouseChimneyUser, FaBackward } from "react-icons/fa6";
+import { FaSquarePollVertical, FaCircleInfo, FaWhmcs, FaHouseChimneyUser, FaBackward, FaArrowsLeftRightToLine} from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
 import Settings from './Settings';
@@ -47,15 +47,23 @@ const Sidebar = ({user}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isHelpOpen, onOpen: onHelpOpen, onClose: onHelpClose } = useDisclosure()
 
+    const handleCloseMenu = () => {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.classList.toggle('close')
+    }
+
   return (
     <div className='h-full flex flex-col justify-between'>
         <div>
-            <img src="/logoipsum.svg" alt="Logo placeholder" className="w-[70%]"/>
+            <div className='flex justify-between items-start logo-container'>
+                <img src="/logoipsum.svg" alt="Logo placeholder" className="h-[40px] logo"/>
+                <button className='w-[48px] h-[40px] flex items-center justify-center cursor-pointer hover:bg-[#31363F] transition-all rounded-md' onClick={() => handleCloseMenu()}><FaArrowsLeftRightToLine /></button>
+            </div>
 
             <nav className='mt-[4rem] flex flex-col gap-3 items-start'>
                
                 <Link to="/dashboard" className='w-full'>
-                    <Button leftIcon={<Icon as={FaHouseChimneyUser} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.dashboard")}</Button>
+                    <Button leftIcon={<Icon as={FaHouseChimneyUser} />} className='menu-button' color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}><span className='menu-text'>{t("app.menu.dashboard")}</span></Button>
                 </Link>
                 
                 {/* <Link to="/stats" className='w-full'>
@@ -67,21 +75,21 @@ const Sidebar = ({user}) => {
         <div>
             <nav className='conf-menu flex flex-col gap-3 items-start'>
                 <Link onClick={onHelpOpen} className='w-full'>
-                    <Button leftIcon={<Icon as={FaCircleInfo} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.help")}</Button>
+                    <Button leftIcon={<Icon as={FaCircleInfo} />} className='menu-button' color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}><span className='menu-text'>{t("app.menu.help")}</span></Button>
                 </Link>
                 <Link onClick={onOpen} className='w-full'>
-                    <Button  leftIcon={<Icon as={FaWhmcs} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.settings")}</Button>
+                    <Button  leftIcon={<Icon as={FaWhmcs} />} className='menu-button' color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}><span className='menu-text'>{t("app.menu.settings")}</span></Button>
                 </Link>
                 <Link onClick={() => handleLogout()} className='w-full'>
-                    <Button leftIcon={<Icon as={FaBackward} />} color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}>{t("app.menu.logout")}</Button>
+                    <Button leftIcon={<Icon as={FaBackward} />} className='menu-button' color='#EEEEEE' width='100%' textAlign='left' display='flex' alignItems='center' justifyContent='flex-start' gap='5px' variant='ghost' _hover={{ backgroundColor: '#31363F' }}><span className='menu-text'>{t("app.menu.logout")}</span></Button>
                 </Link>
             </nav>
 
             <div className='profile-menu flex justify-start items-center mt-10'>
                 <Avatar size='md' name='Juanjo García' src={`https://eu.ui-avatars.com/api/?name=${user.name}+${user.lastName}&size=250`} />
-                <div className='ml-4'>
-                    <p className='text-xs text-[#EEEEEE] mb-2'>{user.name} {user.lastName}</p>
-                    <p className='text-xs  text-[#EEEEEE]'>{user.email}</p>
+                <div className='ml-4 menu-text'>
+                    <p className='text-xs text-[#EEEEEE] mb-2 menu-text'>{user.name} {user.lastName}</p>
+                    <p className='text-xs  text-[#EEEEEE] menu-text'>{user.email}</p>
                 </div>
             </div>
         </div>
